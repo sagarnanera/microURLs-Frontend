@@ -1,22 +1,22 @@
 import './styles/App.css';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import axios from 'axios';
+// import axios from 'axios';
 import IndexPage from './pages/IndexPage';
 
 
 import PrivacyPolicyPage from './components/PrivacyPolicyPage';
 import TermsConditionsPage from './components/TermsConditionsPage';
 import ContactUsPage from './components/ContactUsPage';
-import LoginPage from './pages/LoginPage';
-import SignUpPage from './pages/SignUpPage';
+// import LoginPage from './pages/LoginPage';
+// import SignUpPage from './pages/SignUpPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import DashBoardPage from './pages/DashBoardPage';
+// import DashBoardPage from './pages/DashBoardPage';
 import PageNotFound from './components/PageNotFound';
 import MyURLs from './components/MyURLs';
 
