@@ -20,7 +20,6 @@ import DashBoardPage from './pages/DashBoardPage';
 import PageNotFound from './components/PageNotFound';
 import MyURLs from './components/MyURLs';
 
-const HOST = process.env.REACT_APP_HOST;
 
 function App() {
 
