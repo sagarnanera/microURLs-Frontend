@@ -2,60 +2,85 @@ import axios from "axios";
 import React, { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from 'react-toastify';
+import Loading from "./Loading";
+import { createShortURL } from "../api/apiService";
+import { urlValidator } from "../validators/urlValidator";
 
-import { useDispatch } from 'react-redux';
-import { setShortenURLdata } from '../store/actions/setShortenURLdata';
-
-
-const key = process.env.REACT_APP_CAPTCHA_KEY;
+import { BASE_URL, reCAPTCHA_KEY } from '../utils/constants'
+import { useDispatch } from "react-redux";
+import { addURL } from "../store/actions/urlsActions";
 
 const InputUrlBox = ({ setShorten_URL }) => {
 
-  const [originalUrl, setOriginalUrl] = useState("");
+  const [Original_URL, setOriginalUrl] = useState("");
   const [customSlug, setCustomSlug] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   const recaptchaRef = useRef(0);
 
   const handleSubmit = async e => {
     e.preventDefault();
 
-    console.log("clicked on submit...");
+    const requestData = {
+      Original_URL
+    };
 
-    if (originalUrl === "" || !originalUrl) {
+    if (customSlug && customSlug !== "") {
+      requestData.customSlug = customSlug;
+    }
 
-      toast.error("Provide Long URL!", {
+    const { error } = urlValidator.validate(requestData);
+
+    if (error) {
+      toast.error(error.details[0].message, {
         position: toast.POSITION.TOP_RIGHT
       });
-
       return;
     }
 
+    setLoading(true);
 
     try {
       const captchaToken = await recaptchaRef.current.executeAsync();
       recaptchaRef.current.reset();
 
-      console.log("host : " + process.env.REACT_APP_HOST_LOCAL);
+      const res = await createShortURL({ ...requestData, captchaToken });
 
-      const res = await axios.post("http://" + process.env.REACT_APP_HOST_LOCAL + "/add", {
-        URL: originalUrl,
-        customSlug: customSlug,
-        captchaToken: captchaToken
+      if (!res) {
+        setLoading(false)
+        return
+      }
+
+      setLoading(false)
+      setCustomSlug("");
+      setOriginalUrl("");
+
+      setShorten_URL({ ...res.data.Shorten_URL });
+      dispatch(addURL({ ...res.data.Shorten_URL }));
+
+
+      return
+
+    } catch (error) {
+
+      // console.log(error);
+
+      setLoading(false);
+
+      setCustomSlug("");
+      setOriginalUrl("");
+
+      toast.error(error.message, {
+        position: toast.POSITION.TOP_RIGHT
       });
 
-      if (res.status === 200) {
-        console.log(res.data);
-        setShorten_URL(res.data);
-      } else {
-        console.log("some error occurred...........");
-      }
-    } catch (error) {
-      console.log("Unknown error ocurred... : " + error);
     }
   };
 
   return (
-    <div className="flex flex-col bg-white p-2 md:p-4 m-2 rounded w-auto md:w-[600px]">
+    <div className="flex flex-col bg-white p-2 md:p-4 m-2 rounded w-auto min-[1230px]:w-[600px]">
       <div>
         <div>
           <div className="flex flex-col mx-2">
@@ -69,7 +94,7 @@ const InputUrlBox = ({ setShorten_URL }) => {
               type="url"
               name="original-url"
               id="original-url"
-              value={originalUrl}
+              value={Original_URL}
               onChange={e => {
                 setOriginalUrl(e.target.value);
               }}
@@ -93,7 +118,7 @@ const InputUrlBox = ({ setShorten_URL }) => {
                 name="host-url"
                 id="host-url"
                 readOnly
-                value={`http://${process.env.REACT_APP_HOST}/`}
+                value={BASE_URL}
               />
             </div>
             <div className="md:w-1/2 m-2 md:ml-1">
@@ -113,15 +138,16 @@ const InputUrlBox = ({ setShorten_URL }) => {
         </div>
         <div className="mx-2">
           <button
-            className="w-full mt-4 px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium text-xl"
+            className="w-full mt-4 px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium text-xl flex align-center justify-center"
             onClick={handleSubmit}
+            disabled={loading}
           >
-            Create microURL
+            {loading ? <Loading /> : "Create microURL"}
           </button>
         </div>
       </div>
       <div>
-        <ReCAPTCHA sitekey={key} ref={recaptchaRef} size="invisible" />
+        <ReCAPTCHA sitekey={reCAPTCHA_KEY} ref={recaptchaRef} size="invisible" />
       </div>
     </div>
   );
