@@ -13,6 +13,8 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # build
 build
 
+src/sitemap.js
+
 # Runtime data
 pids
 *.pid
