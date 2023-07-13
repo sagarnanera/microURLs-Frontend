@@ -274,9 +274,9 @@ export const ContactUS = async (data) => {
             return res;
         }
 
-        toast.error(res.data.message, {
-            position: toast.POSITION.TOP_RIGHT
-        });
+        // toast.error(res.data.message, {
+        //     position: toast.POSITION.TOP_RIGHT
+        // });
 
         return null;
 
