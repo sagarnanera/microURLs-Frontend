@@ -88,7 +88,6 @@ const ContactUsPage = () => {
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     className="border border-gray-300 rounded py-2 px-4 w-full"
-                                    required
                                 />
                             </div>
 
