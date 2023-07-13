@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from 'react-toastify';

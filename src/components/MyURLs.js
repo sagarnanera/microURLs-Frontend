@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import URLcard from './URLcard';
 import { getClicks } from '../api/apiService';
-import ReCAPTCHA from 'react-google-recaptcha';
-import { reCAPTCHA_KEY } from '../utils/constants';
-import mapClicks from '../utils/mapClicks';
+// import ReCAPTCHA from 'react-google-recaptcha';
+// import { reCAPTCHA_KEY } from '../utils/constants';
+// import mapClicks from '../utils/mapClicks';
 import { toast } from 'react-toastify';
 
 const MyURLs = () => {
@@ -14,7 +14,7 @@ const MyURLs = () => {
     const [clicksData, setClicksData] = useState({});
 
     const navigate = useNavigate();
-    const recaptchaRef = useRef();
+    // const recaptchaRef = useRef();
 
     useEffect(() => {
 
@@ -27,10 +27,10 @@ const MyURLs = () => {
         const fetchClicksData = async () => {
             try {
 
-                const captchaToken = await recaptchaRef.current.executeAsync();
-                recaptchaRef.current.reset();
+                // const captchaToken = await recaptchaRef.current.executeAsync();
+                // recaptchaRef.current.reset();
 
-                const res = await getClicks({ urls: urlIDs, captchaToken });
+                const res = await getClicks({ urls: urlIDs });
 
                 if (!res) {
                     toast.error("Error fetching Clicks, Please try again later !!!", {
@@ -96,9 +96,9 @@ const MyURLs = () => {
                             <URLcard url={url} key={url._id} clickData={clicksData[url._id]} />
                         ))}
                     </div>
-                    <div>
+                    {/* <div>
                         <ReCAPTCHA sitekey={reCAPTCHA_KEY} ref={recaptchaRef} size="invisible" />
-                    </div>
+                    </div> */}
                 </div>
             )}
 
