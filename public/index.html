@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Instantly generate short URLs and track their performance. Try microURLs now!"
+    />
+    <meta
+      name="keywords"
+      content="URL shortener, link shortener, custom URLs, short URL generator, branded URLs, track link performance, marketing links, social media links"
+    />
+    <meta name="author" content="microURLs pvt ltd" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TQNTNT3LDM"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Instantly generate short URLs and track their performance. Try microURLs now!">
-  <meta name="keywords"
-    content="URL shortener, link shortener, custom URLs, short URL generator, branded URLs, track link performance, marketing links, social media links">
-  <meta name="author" content="microURLs pvt ltd">
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>microURLs | An URL shortner app</title>
-</head>
+      gtag("config", "G-TQNTNT3LDM");
+    </script>
+    <title>microURLs | An URL shortner app</title>
+  </head>
 
-<body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
-</body>
-
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
 </html>
