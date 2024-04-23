@@ -67,6 +67,7 @@ const MyURLs = () => {
                     </p>
                     <div>
                         <button
+                            id='createOne-myurl-btn'
                             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
                             onClick={() => navigate('/')}
                         >
@@ -79,17 +80,14 @@ const MyURLs = () => {
                     <div className='flex justify-evenly items-center'>
                         <h2 className="text-2xl md:text-4xl text-white font-bold my-4 text-center">Your microURLs</h2>
                         <button
-                            className="bg-blue-600 text-white flex justify-center p-3 my-2 rounded font-bold hover:bg-blue-700 hidden sm:inline"
+                            id='createAnother-myurl-btn'
+                            className="bg-blue-600 text-white flex justify-center px-2 sm:p-3 m-1 sm:my-2 rounded font-bold hover:bg-blue-700 sm:inline-block"
                             onClick={() => navigate('/')}
                         >
-                            Create Another
+                            <span className='hidden sm:inline font-bold'> Create Another</span>
+                            <span className="sm:hidden font-bold text-3xl">+</span>
                         </button>
-                        <button
-                            className="bg-blue-600 text-white mx-1 w-10 h-10 px-2 flex justify-center rounded font-bold hover:bg-blue-700 sm:hidden text-3xl"
-                            onClick={() => navigate('/')}
-                        >
-                            +
-                        </button>
+
                     </div>
                     <div className='w-full flex flex-wrap justify-evenly'>
                         {urls.map((url) => (

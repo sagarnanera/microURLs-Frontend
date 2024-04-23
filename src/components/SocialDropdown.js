@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FaFacebookSquare, FaWhatsappSquare, FaTwitterSquare, FaInstagramSquare, FaShare, FaShareAlt, FaLinkedin, FaMailBulk, FaEnvelope } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
 
-const SocialDropdown = ({ Shorten_URL }) => {
+const SocialDropdown = ({ Shorten_URL, from }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
     const [isDropdownUp, setIsDropdownUp] = useState(false);
@@ -68,7 +68,7 @@ const SocialDropdown = ({ Shorten_URL }) => {
     return (
         <div className={`relative ${isDropdownUp ? 'bottom-full' : ''}`} ref={dropdownRef}>
             <button
-                className="text-white mx-1 bg-blue-600 rounded hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600 text-lg sm:text-md p-2 md:p-2 md:px-4"
+                className={`${from === "shorten-box" ? "share-shorten-box-btn":"share-myurl-btn" } text-white mx-1 bg-blue-600 rounded hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600 text-lg sm:text-md p-2 md:p-2 md:px-4`}
                 onClick={toggleDropdown}
                 data-tooltip-id='share'
             >
@@ -80,37 +80,37 @@ const SocialDropdown = ({ Shorten_URL }) => {
                     className={`absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-20 ${isDropdownUp ? 'bottom-12' : ''}`}
                 >
                     <h3 className='text-lg sm:text-md text-center'>Share On Socials</h3>
-                    <button className="flex items-center w-full p-2 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-800 focus:text-white"
+                    <button className={`${from === "shorten-box" ? "share-fb-shorten-box-btn":"share-fb-myurl-btn" } flex items-center w-full p-2 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-800 focus:text-white`}
                         onClick={() => handleShare('facebook')}
                     >
                         <FaFacebookSquare className="text-4xl sm:text-2xl mr-2" />
                         Facebook
                     </button>
-                    <button className="flex items-center w-full p-2 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-800 focus:text-white"
+                    <button className={`${from === "shorten-box" ? "share-wa-shorten-box-btn":"share-wa-myurl-btn" } flex items-center w-full p-2 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-800 focus:text-white`}
                         onClick={() => handleShare('whatsapp')}
                     >
                         <FaWhatsappSquare className="text-4xl sm:text-2xl mr-2" />
                         WhatsApp
                     </button>
-                    <button className="flex items-center w-full p-2 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-800 focus:text-white"
+                    <button className={`${from === "shorten-box" ? "share-tw-shorten-box-btn":"share-tw-myurl-btn" } flex items-center w-full p-2 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-800 focus:text-white`}
                         onClick={() => handleShare('twitter')}
                     >
                         <FaTwitterSquare className="text-4xl sm:text-2xl mr-2" />
                         Twitter
                     </button>
-                    <button className="flex items-center w-full p-2 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-800 focus:text-white"
+                    <button className={`${from === "shorten-box" ? "share-ig-shorten-box-btn":"share-ig-myurl-btn" } flex items-center w-full p-2 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-800 focus:text-white`}
                         onClick={() => handleShare('instagram')}
                     >
                         <FaInstagramSquare className="text-4xl sm:text-2xl mr-2" />
                         Instagram
                     </button>
-                    <button className="flex items-center w-full p-2 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-800 focus:text-white"
+                    <button className={`${from === "shorten-box" ? "share-ln-shorten-box-btn":"share-ln-myurl-btn" } flex items-center w-full p-2 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-800 focus:text-white`}
                         onClick={() => handleShare('linkedin')}
                     >
                         <FaLinkedin className="text-4xl sm:text-2xl mr-2" />
                         Linkedin
                     </button>
-                    <button className="flex items-center w-full p-2 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-800 focus:text-white"
+                    <button className={`${from === "shorten-box" ? "share-mail-shorten-box-btn":"share-mail-myurl-btn" } flex items-center w-full p-2 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-800 focus:text-white`}
                         onClick={() => handleShare('email')}
                     >
                         <FaEnvelope className="text-4xl sm:text-2xl mr-2" />

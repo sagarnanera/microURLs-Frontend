@@ -77,7 +77,7 @@ const ContactUsPage = () => {
                     <div className="bg-white shadow-lg rounded-lg m-2 md:m-0 p-6 w-96 md:w-[600px]">
                         <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
 
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} id='contactUs-form'>
                             <div className="mb-4">
                                 <label htmlFor="name" className="block text-lg font-bold mb-2">
                                     Name <span className='text-gray-500'>(optional)</span>
