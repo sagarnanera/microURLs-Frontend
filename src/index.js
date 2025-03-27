@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './store/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,6 +15,7 @@ root.render(
       <PersistGate persistor={persistor} loading={null}>
         <App />
         <Analytics />
+        <SpeedInsights />
       </PersistGate>
     </Provider>
   </React.StrictMode>
