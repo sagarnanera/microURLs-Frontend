@@ -56,7 +56,7 @@ const Navbar = ({ fixed }) => {
                         to="/"
                         className="text-2xl font-bold leading-relaxed inline-block mr-4 py-1 whitespace-nowrap text-white"
                     >
-                        <img draggable="false" src="/microURL-logo.png" alt="microURL-logo" className="w-10 h-10 inline-block mx-2" />
+                        <img draggable="false" src={'/microurl.webp'} alt="microURL-logo" className="w-10 h-10 inline-block mx-2" />
                         microURLs
                     </NavLink>
                     <button

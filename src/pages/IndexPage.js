@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import InputUrlBox from '../components/InputUrlBox';
 import ShortenUrlBox from '../components/ShortenUrlBox';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const IndexPage = () => {
 
@@ -9,6 +10,12 @@ const IndexPage = () => {
     const [shorten_URL, setShorten_URL] = useState({});
 
     return (
+    <>
+        <Helmet>
+            {/* add conical tag here to avoid duplicate content */}
+            <link rel="canonical" href="https://app.microurls.com/" />
+        </Helmet>
+
         <div className="flex-grow">
             {!shorten_URL.Shorten_URL ? (
                 <InputUrlBox setShorten_URL={setShorten_URL} />
@@ -48,6 +55,7 @@ const IndexPage = () => {
                 </div>
             </div>
         </div>
+    </>
     );
 };
 

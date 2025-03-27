@@ -5,7 +5,7 @@ import Loading from "./Loading";
 import { createShortURL } from "../api/apiService";
 import { urlValidator } from "../validators/urlValidator";
 
-import { BASE_URL, reCAPTCHA_KEY } from '../utils/constants'
+import { API_BASE_URL, reCAPTCHA_KEY } from '../utils/constants'
 import { useDispatch } from "react-redux";
 import { addURL } from "../store/actions/urlsActions";
 
@@ -80,7 +80,7 @@ const InputUrlBox = ({ setShorten_URL }) => {
 
   return (
     <div className="flex flex-col bg-white p-2 md:p-4 m-2 rounded w-auto min-[1230px]:w-[600px]">
-      <div>
+      <form>
         <div>
           <div className="flex flex-col mx-2">
             <div className="flex">
@@ -117,7 +117,7 @@ const InputUrlBox = ({ setShorten_URL }) => {
                 name="host-url"
                 id="host-url"
                 readOnly
-                value={BASE_URL}
+                value={API_BASE_URL}
               />
             </div>
             <div className="md:w-1/2 m-2 md:ml-1">
@@ -145,7 +145,7 @@ const InputUrlBox = ({ setShorten_URL }) => {
             {loading ? <Loading /> : "Create microURL"}
           </button>
         </div>
-      </div>
+      </form>
       <div>
         <ReCAPTCHA sitekey={reCAPTCHA_KEY} ref={recaptchaRef} size="invisible" />
       </div>

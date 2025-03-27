@@ -3,10 +3,10 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import { BASE_URL } from "../utils/constants";
+import { API_BASE_URL } from "../utils/constants";
 
 const apiService = axios.create({
-    baseURL: BASE_URL,
+    baseURL: API_BASE_URL,
 });
 
 apiService.defaults.timeout = 5000;
