@@ -13,7 +13,7 @@ const IndexPage = () => {
     <>
         <Helmet>
             {/* add conical tag here to avoid duplicate content */}
-            <link rel="canonical" href="https://app.microurls.com/" />
+            <link rel="canonical" href="https://app.microurl.live/" />
         </Helmet>
 
         <div className="flex-grow">
