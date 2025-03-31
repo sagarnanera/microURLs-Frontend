@@ -1,8 +1,14 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const PrivacyPolicyPage = () => {
     return (
-        // <div className="container mx-auto p-4 text-white">
+        <>
+        <Helmet>
+            <title>
+                Privacy Policy - microURLs | An URL shortener app
+            </title>
+        </Helmet>
         <div className="flex items-center justify-center">
             <div className="bg-white shadow-lg rounded-lg m-2 md:m-4 p-6 w-auto">
                 <h1 className="text-2xl md:text-4xl font-bold mb-4 text-center">Privacy Policy</h1>
@@ -57,6 +63,7 @@ const PrivacyPolicyPage = () => {
                 <p className="text-lg text-center font-bold">Effective Date: February 28, 2023</p>
             </div>
         </div>
+        </>
     );
 };
 

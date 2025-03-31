@@ -7,6 +7,7 @@ import { getClicks } from '../api/apiService';
 // import { reCAPTCHA_KEY } from '../utils/constants';
 // import mapClicks from '../utils/mapClicks';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 const MyURLs = () => {
     const urls = useSelector((state) => state.urls);
@@ -59,6 +60,11 @@ const MyURLs = () => {
 
     return (
         <>
+
+        <Helmet>
+            <title>My URLs - microURLS | An URL shortener app</title>
+        </Helmet>
+
             {urls.length === 0 ? (
                 <div className="flex flex-col items-center justify-center flex-grow">
                     <h1 className="text-4xl text-white font-bold mb-4">No URLs Found</h1>

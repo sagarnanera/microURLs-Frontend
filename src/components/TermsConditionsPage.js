@@ -1,9 +1,15 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
 const TermsConditionsPage = () => {
     return (
-        // <div className="container mx-auto px-4 py-8 text-white">
+        <>
+        <Helmet>
+            <title>
+                Terms and Conditions - microURLs | An URL shortener app
+            </title>
+        </Helmet>
         <div className="flex items-center justify-center">
             <div className="bg-white shadow-lg rounded-lg m-2 md:m-4 p-6 w-auto">
                 <h1 className="text-2xl md:text-4xl font-bold mb-6 text-center">Terms and Conditions</h1>
@@ -94,6 +100,7 @@ const TermsConditionsPage = () => {
                 </p>
             </div>
         </div>
+        </>
     );
 };
 

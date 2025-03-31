@@ -5,6 +5,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { reCAPTCHA_KEY } from '../utils/constants';
 import { ContactUS as ContactUSapi } from '../api/apiService';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 const ContactUsPage = () => {
     const [name, setName] = useState('');
@@ -71,6 +72,13 @@ const ContactUsPage = () => {
     };
 
     return (
+
+    <>
+     <Helmet>
+            <title>
+                Contact Us - microURLS | An URL shortener app
+            </title>
+        </Helmet>
         <div className="flex items-center justify-center flex-grow">
             {!resSubmitted ?
                 <>
@@ -145,6 +153,7 @@ const ContactUsPage = () => {
 
             }
         </div>
+    </>
     );
 };
 
