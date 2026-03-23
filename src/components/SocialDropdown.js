@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FaFacebookSquare, FaWhatsappSquare, FaTwitterSquare, FaInstagramSquare, FaShare, FaShareAlt, FaLinkedin, FaMailBulk, FaEnvelope } from 'react-icons/fa';
+import { FaFacebookSquare, FaWhatsappSquare, FaTwitterSquare, FaInstagramSquare, FaShareAlt, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
 
 const SocialDropdown = ({ Shorten_URL, from }) => {
@@ -123,4 +123,3 @@ const SocialDropdown = ({ Shorten_URL, from }) => {
 };
 
 export default SocialDropdown;
-

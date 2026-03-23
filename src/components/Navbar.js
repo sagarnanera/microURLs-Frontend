@@ -1,52 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { LogOUT as logOutAPI } from "../api/apiService";
-import { setUser } from "../store/actions/userActions";
-import { toast } from "react-toastify";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Navbar = ({ fixed }) => {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const location = useLocation();
 
-    const user = useSelector(state => state.user);
-
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-
     const handleToggle = () => {
         setNavbarOpen(!navbarOpen);
     };
-
-    const LogOUT = async () => {
-        try {
-            const res = await logOutAPI();
-
-            if (!res) {
-                toast.error("Failed to Log Out, Please try again later !!!", {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-                return
-            }
-
-            dispatch(setUser(null));
-
-            toast.success(res.data.message, {
-                position: toast.POSITION.TOP_RIGHT
-            });
-
-            navigate('/');
-
-        } catch (error) {
-
-            // console.log(error);
-
-            toast.error(error.message, {
-                position: toast.POSITION.TOP_RIGHT
-            });
-        }
-
-    }
 
     return (
         <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-gradient-to-r from-teal-400 to-purple-600 mb-3">
