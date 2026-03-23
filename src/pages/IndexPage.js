@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import InputUrlBox from '../components/InputUrlBox';
 import ShortenUrlBox from '../components/ShortenUrlBox';
-import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 const IndexPage = () => {
 
-    const navigate = useNavigate();
     const [shorten_URL, setShorten_URL] = useState({});
 
     return (
