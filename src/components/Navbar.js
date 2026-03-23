@@ -115,7 +115,6 @@ const Navbar = ({ fixed }) => {
                                 <li className="nav-item">
                                     <NavLink
                                         // to="/logout"
-                                        onClick={LogOUT}
                                         className={`px-3 py-2 flex items-center font-bold leading-snug text-white hover:opacity-75 ${location.pathname === "/logout" ? "md:text-[#2ED3BF] text-[#8C3FE7] underline underline-offset-4" : ""
                                             }`}
                                     >
